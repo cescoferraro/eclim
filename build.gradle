@@ -1,18 +1,22 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
+dependencies {
+  compile files('libs/ojdbc6.jar')
+}
+
 mainClassName = "main.java.Test"
 
 applicationDefaultJvmArgs = ["-ea"]
 
 run{
- standardInput = System.in
+  standardInput = System.in
 }
 
 sourceSets {
-    main {
-        java {
-            srcDirs 'src'
-        }
+  main {
+    java {
+      srcDirs 'src'
     }
- }
+  }
+}
