@@ -1,6 +1,5 @@
 package main.java;
 
-import java.util.Scanner;
 import java.sql.*; 
 
 public class Test {
