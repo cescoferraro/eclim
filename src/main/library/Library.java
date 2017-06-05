@@ -61,6 +61,93 @@ public class Library {
 		return cont;
 	}
 
+	public static int MaiorPedidoValor(int[][] filial) {
+		int max = 0;
+		for (int i = 0; i < filial.length; i++) {
+			int cont = 0;
+			for (int j = 0; j < filial[i].length; j++) {
+				cont = cont + (filial[i][j] * precos[j]);
+			}
+			if (cont > max)
+				max = cont;
+		}
+		return max;
+	}
+
+	public static int ValorMaiorPedidoValorTodas() {
+		int max = 0;
+		int[] maiorPedido = new int[4];
+		for (int i = 0; i < matrix.length; i++) {
+			int cont = 0;
+			for (int j = 0; j < matrix[i].length; j++) {
+				cont = cont + (matrix[i][j] * precos[j]);
+			}
+			if (cont > max) {
+				maiorPedido = matrix[i];
+				max = cont;
+
+			}
+		}
+		for (int i = 0; i < filial1.length; i++) {
+			int cont = 0;
+			for (int j = 0; j < filial1[i].length; j++) {
+				cont = cont + (filial1[i][j] * precos[j]);
+			}
+			if (cont > max) {
+				maiorPedido = filial1[i];
+				max = cont;
+			}
+		}
+		for (int i = 0; i < filial2.length; i++) {
+			int cont = 0;
+			for (int j = 0; j < filial2[i].length; j++) {
+				cont = cont + (filial2[i][j] * precos[j]);
+			}
+			if (cont > max) {
+				maiorPedido = filial2[i];
+				max = cont;
+			}
+		}
+		return max;
+	}
+
+	public static int[] MaiorPedidoValorTodas() {
+		int max = 0;
+		int[] maiorPedido = new int[4];
+		for (int i = 0; i < matrix.length; i++) {
+			int cont = 0;
+			for (int j = 0; j < matrix[i].length; j++) {
+				cont = cont + (matrix[i][j] * precos[j]);
+			}
+			if (cont > max) {
+				maiorPedido = matrix[i];
+				max = cont;
+
+			}
+		}
+		for (int i = 0; i < filial1.length; i++) {
+			int cont = 0;
+			for (int j = 0; j < filial1[i].length; j++) {
+				cont = cont + (filial1[i][j] * precos[j]);
+			}
+			if (cont > max) {
+				maiorPedido = filial1[i];
+				max = cont;
+			}
+		}
+		for (int i = 0; i < filial2.length; i++) {
+			int cont = 0;
+			for (int j = 0; j < filial2[i].length; j++) {
+				cont = cont + (filial2[i][j] * precos[j]);
+			}
+			if (cont > max) {
+				maiorPedido = filial2[i];
+				max = cont;
+			}
+		}
+		return maiorPedido;
+	}
+
 	public static int[] MaiorPedido(int[][] filial) {
 		int max = 0;
 		for (int i = 0; i < filial.length; i++) {
@@ -80,7 +167,7 @@ public class Library {
 			// System.out.println(Arrays.toString(filial[i]));
 			// System.out.println(cont);
 			if (cont == max)
-				hey = filial[i];
+				return filial[i];
 		}
 		return hey;
 
