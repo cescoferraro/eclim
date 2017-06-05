@@ -25,12 +25,12 @@ public class Test {
 		int perdedor =lib.arecadadoPorLanche(lib.LancheMenosVendido());
 		System.out.println(ganahdor - perdedor);
 		// Quinta
-		System.out.println(Arrays.toString( lib.MaiorPedido(lib.matrix) ));
-		System.out.println(Arrays.toString( lib.MaiorPedido(lib.filial1) ));
-		System.out.println(Arrays.toString( lib.MaiorPedido(lib.filial2) ));
 		int[] maiorPedidoMatriz =  lib.MaiorPedido(lib.matrix);
 		int[] maiorPedidoFilial1 = lib.MaiorPedido(lib.filial1 );
 		int [] maiorPedidoFilial2 = lib.MaiorPedido(lib.filial2 );
+		System.out.println(Arrays.toString(maiorPedidoMatriz));
+		System.out.println(Arrays.toString( maiorPedidoFilial1));
+		System.out.println(Arrays.toString( maiorPedidoFilial2));
 		//Sexta
 		// Varios pedidos chegaram no limite máximo de lanches por pedido.
 		// fica impossível de dizer qual a venda com mais lanches.
