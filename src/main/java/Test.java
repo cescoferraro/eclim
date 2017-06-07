@@ -20,17 +20,18 @@ public class Test {
 		// Primeira
 		//
 		System.out.println("Total de vendas de todas as lojas");
-		System.out.printf("Total: %s \n", lib.TOTALMAX());
+		System.out.printf("Total: %s \n", lib.totalDeVendasEmpresa());
 		// Segunda
 		System.out.println("Lanche mais vendido");
-		System.out.printf("Nro: %s \n", lib.LancheMaisVendido());
+		int lancheMaisVendido = lib.lancheMaisVendido();
+		System.out.printf("Nro: %s \n", lancheMaisVendido);
 		// Terceira
 		System.out.println("Lanche menos vendido");
-		System.out.printf("Nro: %s \n", lib.LancheMenosVendido());
+		System.out.printf("Nro: %s \n", lib.lancheMenosVendido());
 		// Quarta
 		System.out.println("Diferença da arrecadação do lanche mais e menos vendido");
-		int ganahdor = lib.arecadadoPorLanche(lib.LancheMaisVendido());
-		int perdedor = lib.arecadadoPorLanche(lib.LancheMenosVendido());
+		int ganahdor = lib.arecadadoPorLanche(lib.lancheMaisVendido());
+		int perdedor = lib.arecadadoPorLanche(lib.lancheMenosVendido());
 		System.out.printf("diferença: %s \n", ganahdor - perdedor);
 		// Quinta
 		System.out.println("A venda onde mais lanches foram vendidos para cada loja");

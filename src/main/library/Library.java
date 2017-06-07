@@ -1,12 +1,11 @@
 package main.library;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class Library {
-	public static int[][] matrix = new int[1][4];
-	public static int[][] filial1 = new int[1][4];
-	public static int[][] filial2 = new int[1][4];
+	public int[][] matrix = new int[1][4];
+	public int[][] filial1 = new int[1][4];
+	public int[][] filial2 = new int[1][4];
 	public static int[] precos = { 15, 28, 30, 25 };
 
 	public static void main(String... args) {
@@ -21,16 +20,16 @@ public class Library {
 		return disponivel;
 	}
 
-	public static int[][] relatorioGeral() {
+	public int[][] relatorioGeral() {
 		int[][] results = new int[3][4];
-		results[0] = totlaDeVendas(1);
-		results[1] = totlaDeVendas(2);
-		results[2] = totlaDeVendas(3);
+		results[0] = this.totlaDeVendas(1);
+		results[1] = this.totlaDeVendas(2);
+		results[2] = this.totlaDeVendas(3);
 		return results;
 	}
 
-	public static int[] relatorioLanchesAcumulado() {
-		int[][] relatorio = relatorioGeral();
+	public int[] relatorioLanchesAcumulado() {
+		int[][] relatorio = this.relatorioGeral();
 		int[] results = new int[4];
 		results[0] = relatorio[0][0] + relatorio[1][0] + relatorio[2][0];
 		results[1] = relatorio[0][1] + relatorio[1][1] + relatorio[2][1];
@@ -39,8 +38,8 @@ public class Library {
 		return results;
 	}
 
-	public static int LancheMenosVendido() {
-		int[] Acumulado = relatorioLanchesAcumulado();
+	public int lancheMenosVendido() {
+		int[] Acumulado = this.relatorioLanchesAcumulado();
 		int min = Math.min(Acumulado[0], Math.min(Acumulado[1], Math.min(Acumulado[2], Acumulado[3])));
 		if (min == Acumulado[0])
 			return 1;
@@ -74,47 +73,43 @@ public class Library {
 		return max;
 	}
 
-	public static int ValorMaiorPedidoValorTodas() {
+	public int ValorMaiorPedidoValorTodas() {
 		int max = 0;
-		int[] maiorPedido = new int[4];
-		for (int i = 0; i < matrix.length; i++) {
+		for (int i = 0; i < this.matrix.length; i++) {
 			int cont = 0;
-			for (int j = 0; j < matrix[i].length; j++) {
-				cont = cont + (matrix[i][j] * precos[j]);
+			for (int j = 0; j < this.matrix[i].length; j++) {
+				cont = cont + (this.matrix[i][j] * precos[j]);
 			}
 			if (cont > max) {
-				maiorPedido = matrix[i];
 				max = cont;
 
 			}
 		}
-		for (int i = 0; i < filial1.length; i++) {
+		for (int i = 0; i < this.filial1.length; i++) {
 			int cont = 0;
 			for (int j = 0; j < filial1[i].length; j++) {
 				cont = cont + (filial1[i][j] * precos[j]);
 			}
 			if (cont > max) {
-				maiorPedido = filial1[i];
 				max = cont;
 			}
 		}
-		for (int i = 0; i < filial2.length; i++) {
+		for (int i = 0; i < this.filial2.length; i++) {
 			int cont = 0;
-			for (int j = 0; j < filial2[i].length; j++) {
-				cont = cont + (filial2[i][j] * precos[j]);
+			for (int j = 0; j < this.filial2[i].length; j++) {
+				cont = cont + (this.filial2[i][j] * precos[j]);
 			}
 			if (cont > max) {
-				maiorPedido = filial2[i];
 				max = cont;
 			}
 		}
 		return max;
 	}
 
-	public static int[] MaiorPedidoValorTodas() {
+	public int[] MaiorPedidoValorTodas() {
 		int max = 0;
 		int[] maiorPedido = new int[4];
-		for (int i = 0; i < matrix.length; i++) {
+		for (int i = 0; i < this.matrix.length; i++) {
 			int cont = 0;
 			for (int j = 0; j < matrix[i].length; j++) {
 				cont = cont + (matrix[i][j] * precos[j]);
@@ -125,7 +120,7 @@ public class Library {
 
 			}
 		}
-		for (int i = 0; i < filial1.length; i++) {
+		for (int i = 0; i < this.filial1.length; i++) {
 			int cont = 0;
 			for (int j = 0; j < filial1[i].length; j++) {
 				cont = cont + (filial1[i][j] * precos[j]);
@@ -135,7 +130,7 @@ public class Library {
 				max = cont;
 			}
 		}
-		for (int i = 0; i < filial2.length; i++) {
+		for (int i = 0; i < this.filial2.length; i++) {
 			int cont = 0;
 			for (int j = 0; j < filial2[i].length; j++) {
 				cont = cont + (filial2[i][j] * precos[j]);
@@ -164,8 +159,6 @@ public class Library {
 			for (int j = 0; j < filial[i].length; j++) {
 				cont = cont + filial[i][j];
 			}
-			// System.out.println(Arrays.toString(filial[i]));
-			// System.out.println(cont);
 			if (cont == max)
 				return filial[i];
 		}
@@ -173,8 +166,8 @@ public class Library {
 
 	}
 
-	public static int LancheMaisVendido() {
-		int[] Acumulado = relatorioLanchesAcumulado();
+	public int lancheMaisVendido() {
+		int[] Acumulado = this.relatorioLanchesAcumulado();
 		int min = Math.max(Acumulado[0], Math.max(Acumulado[1], Math.max(Acumulado[2], Acumulado[3])));
 		if (min == Acumulado[0])
 			return 1;
@@ -187,8 +180,8 @@ public class Library {
 		return 0;
 	}
 
-	public static int arecadadoPorLanche(int lanche) {
-		int[] Acumulado = relatorioLanchesAcumulado();
+	public int arecadadoPorLanche(int lanche) {
+		int[] Acumulado = this.relatorioLanchesAcumulado();
 		int min = Math.max(Acumulado[0], Math.max(Acumulado[1], Math.max(Acumulado[2], Acumulado[3])));
 		switch (lanche) {
 		case 1:
@@ -204,7 +197,7 @@ public class Library {
 		}
 	}
 
-	public int TOTALMAX() {
+	public int totalDeVendasEmpresa() {
 		int cont = 0;
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[i].length; j++) {
@@ -224,12 +217,12 @@ public class Library {
 		return cont;
 	}
 
-	public static int[] totlaDeVendas(int unidade) {
+	public int[] totlaDeVendas(int unidade) {
 		int[] lanches = new int[4];
 		switch (unidade) {
 		case 1:
 			for (int i = 0; i < 4; i++) {
-				lanches[i] = VendaPorLanche(i, matrix);
+				lanches[i] = VendaPorLanche(i, this.matrix);
 			}
 			return lanches;
 		case 2:
