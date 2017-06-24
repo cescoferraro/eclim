@@ -1,10 +1,6 @@
 package main.uno;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Scanner;
-
 import main.carta.Carta;
 import main.lista.Lista;
 import main.setup.Setup;
