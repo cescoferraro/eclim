@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import main.carta.Carta;
-import main.java.Uno;
+import main.uno.Uno;
 import main.lista.Lista;
 
 public class Setup {
