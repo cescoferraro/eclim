@@ -1,6 +1,17 @@
+repositories {
+	mavenCentral()
+}
+
 apply plugin: 'java'
 apply plugin: 'application'
 
+dependencies {
+	compile 'org.apache.commons:commons-lang3:3.3.2'
+	testCompile 'junit:junit:4.12'
+} 
+test {
+    testLogging.showStandardStreams = true
+}
 mainClassName = "main.java.Uno"
 
 applicationDefaultJvmArgs = ["-ea"]
@@ -10,12 +21,9 @@ run{
 }
 
 sourceSets {
-    main {
-        java {
-            srcDirs 'src'
-        }
-    }
- }
+	main.java.srcDir 'src/main'
+	test.java.srcDir 'src/test'
+}
 
 jar {
   manifest {

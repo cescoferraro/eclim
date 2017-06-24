@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 import main.carta.Carta;
 import main.lista.Lista;
+import main.setup.Setup;
 
 public class Uno {
 	public static Lista baralho;
@@ -100,10 +101,9 @@ public class Uno {
 
 		System.out.print("Quantidade de jogadores: ");
 
-			while (qtdJogadores < 1 || qtdJogadores > 10) {
-				qtdJogadores = entrada.nextInt();
-			}
-
+		while (qtdJogadores < 1 || qtdJogadores > 10) {
+			qtdJogadores = entrada.nextInt();
+		}
 
 		jogadores = new Lista[qtdJogadores];
 
@@ -345,6 +345,18 @@ public class Uno {
 					passaVez = true;
 					terminou = true;
 					break;
+				case 5:
+					limpaTela();
+					// save();
+					System.out.println();
+					passaVez = false;
+					break;
+				case 6:
+					limpaTela();
+					// load();
+					System.out.println();
+					passaVez = false;
+					break;
 				default:
 					limpaTela();
 					passaVez = false;
@@ -352,7 +364,6 @@ public class Uno {
 			}
 		}
 	}
-
 	public static void delay(int tempo) {
 		try {
 			Thread.sleep(tempo);
@@ -364,80 +375,6 @@ public class Uno {
 	public static void limpaTela() {
 		for (int i = 0; i < 50; i++) {
 			System.out.println();
-		}
-	}
-
-	public static void save() {
-		try {
-			FileWriter arq;
-			PrintWriter writeArq;
-			Carta c;
-			int size = 0;
-
-			// Salva baralho
-			arq = new FileWriter("saveLoadBaralho.txt");
-			writeArq = new PrintWriter(arq);
-			size = baralho.size();
-
-			for (int i = 0; i < baralho.size(); i++) {
-				c = baralho.get(i);
-				writeArq.printf(c.getNome() + "," + c.getCor() + "," + c.getEfeito());
-
-				if (baralho.size() - 1 != i)
-					writeArq.printf(";");
-			}
-			arq.close();
-
-			// salva mesa
-			arq = new FileWriter("saveLoadMesa.txt");
-			writeArq = new PrintWriter(arq);
-			size = mesa.size();
-
-			for (int i = 0; i < mesa.size(); i++) {
-				c = mesa.get(i);
-				writeArq.printf(c.getNome() + "," + c.getCor() + "," + c.getEfeito());
-
-				if (size - 1 != i)
-					writeArq.printf(";");
-			}
-			arq.close();
-
-			// salva jogadores
-			arq = new FileWriter("saveLoadJogadores.txt");
-			writeArq = new PrintWriter(arq);
-
-			for (int i = 0; i < jogadores.length; i++) {
-				Lista lstJog = jogadores[i];
-
-				size = lstJog.size();
-				for (int z = 0; z < lstJog.size(); z++) {
-					c = lstJog.get(z);
-					writeArq.printf(c.getNome() + "," + c.getCor() + "," + c.getEfeito());
-
-					if (size - 1 != z)
-						writeArq.printf(";");
-				}
-
-				if (jogadores.length - 1 != i)
-					writeArq.printf(";;");
-			}
-			arq.close();
-
-			// salva config
-			arq = new FileWriter("saveLoadConfig.txt");
-			writeArq = new PrintWriter(arq);
-
-			writeArq.printf(qtdJogadores + ",");
-			writeArq.printf(vezDoJogador + ",");
-			writeArq.printf(definidorDeVez + ",");
-			writeArq.printf(passaVez + ",");
-			writeArq.printf(terminou.toString());
-			arq.close();
-
-			System.out.println("Salvo com sucesso.");
-
-		} catch (IOException e) {
-			System.out.println("Ocorreu um erro no processo. Tente novamente.");
 		}
 	}
 
