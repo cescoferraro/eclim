@@ -124,7 +124,7 @@ public class Uno {
 					mostraMao();
 					System.out.println("\nQual carta deseja jogar?");
 					while ((escolha < 0 || escolha > jogadores[vezDoJogador].size() - 1) && escolha != -1
-							&& trocaRodada == false) {
+						   && trocaRodada == false) {
 						escolha = entrada.nextInt();
 						if (escolha < 0 || escolha > jogadores[vezDoJogador].size() - 1) {
 							limpaTela();
@@ -190,10 +190,17 @@ public class Uno {
 			Lista jogador = new Lista();
 			jogadores[i] = jogador;
 		}
-
 		iniciaMaos();
+		virarCarta();
 	}
 
+	public void virarCarta(){
+		mesa = new Lista();
+		Carta teste = baralho.remove();
+		mesa.add(teste);
+		limpaTela();
+
+	}
 	public static void informaSeValeu(String mensagem) {
 		// Informa na tela se valeu ou não
 		limpaTela();
@@ -210,9 +217,9 @@ public class Uno {
 	public static Boolean verificaJogadaValida() {
 		if (escolha > -1 && escolha < jogadores[vezDoJogador].size()) {
 			if (((jogadores[vezDoJogador].get(escolha).getNome().equals(mesa.getLast().getNome()))
-					|| (jogadores[vezDoJogador].get(escolha).getCor().equals(mesa.getLast().getCor())))
-					|| jogadores[vezDoJogador].get(escolha).getNome().equals("Cur")
-					|| jogadores[vezDoJogador].get(escolha).getNome().equals("+4")) {
+				 || (jogadores[vezDoJogador].get(escolha).getCor().equals(mesa.getLast().getCor())))
+				|| jogadores[vezDoJogador].get(escolha).getNome().equals("Cur")
+				|| jogadores[vezDoJogador].get(escolha).getNome().equals("+4")) {
 				Carta aux = jogadores[vezDoJogador].remove(escolha);
 				mesa.add(aux);
 				// Informa na tela se valeu ou não
@@ -234,7 +241,7 @@ public class Uno {
 	public static void efeitosEspeciais() {
 		String aux = mesa.getLast().getEfeito();
 		int efeito = Integer.parseInt(aux);
-				Scanner entrada = new Scanner(System.in);
+		Scanner entrada = new Scanner(System.in);
 		Carta auxCarta;
 		int cor = -1;
 		switch (efeito) {
