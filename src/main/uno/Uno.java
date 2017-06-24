@@ -19,36 +19,42 @@ public class Uno {
 	public static Boolean passaVez = false;
 	public static Boolean terminou = false;
 	public static int escolha = -2;
+	public static Carta[] deck = { new Carta("0", "vermelho", "0"), new Carta("0", "vermelho", "0"),
+			new Carta("1", "vermelho", "0"), new Carta("1", "vermelho", "0"), new Carta("2", "vermelho", "0"),
+			new Carta("2", "vermelho", "0"), new Carta("3", "vermelho", "0"), new Carta("3", "vermelho", "0"),
+			new Carta("4", "vermelho", "0"), new Carta("4", "vermelho", "0"), new Carta("5", "vermelho", "0"),
+			new Carta("5", "vermelho", "0"), new Carta("6", "vermelho", "0"), new Carta("6", "vermelho", "0"),
+			new Carta("7", "vermelho", "0"), new Carta("7", "vermelho", "0"), new Carta("8", "vermelho", "0"),
+			new Carta("8", "vermelho", "0"), new Carta("9", "vermelho", "0"), new Carta("9", "vermelho", "0"),
+			new Carta("0", "verde", "0"), new Carta("0", "verde", "0"), new Carta("1", "verde", "0"),
+			new Carta("1", "verde", "0"), new Carta("2", "verde", "0"), new Carta("2", "verde", "0"),
+			new Carta("3", "verde", "0"), new Carta("3", "verde", "0"), new Carta("4", "verde", "0"),
+			new Carta("4", "verde", "0"), new Carta("5", "verde", "0"), new Carta("5", "verde", "0"),
+			new Carta("6", "verde", "0"), new Carta("6", "verde", "0"), new Carta("7", "verde", "0"),
+			new Carta("7", "verde", "0"), new Carta("8", "verde", "0"), new Carta("8", "verde", "0"),
+			new Carta("9", "verde", "0"), new Carta("9", "verde", "0"), new Carta("0", "amarelo", "0"),
+			new Carta("0", "amarelo", "0"), new Carta("1", "amarelo", "0"), new Carta("1", "amarelo", "0"),
+			new Carta("2", "amarelo", "0"), new Carta("2", "amarelo", "0"), new Carta("3", "amarelo", "0"),
+			new Carta("3", "amarelo", "0"), new Carta("4", "amarelo", "0"), new Carta("4", "amarelo", "0"),
+			new Carta("5", "amarelo", "0"), new Carta("5", "amarelo", "0"), new Carta("6", "amarelo", "0"),
+			new Carta("6", "amarelo", "0"), new Carta("7", "amarelo", "0"), new Carta("7", "amarelo", "0"),
+			new Carta("8", "amarelo", "0"), new Carta("8", "amarelo", "0"), new Carta("9", "amarelo", "0"),
+			new Carta("9", "amarelo", "0"), new Carta("0", "azul", "0"), new Carta("0", "azul", "0"),
+			new Carta("1", "azul", "0"), new Carta("1", "azul", "0"), new Carta("2", "azul", "0"),
+			new Carta("2", "azul", "0"), new Carta("3", "azul", "0"), new Carta("3", "azul", "0"),
+			new Carta("4", "azul", "0"), new Carta("4", "azul", "0"), new Carta("5", "azul", "0"),
+			new Carta("5", "azul", "0"), new Carta("6", "azul", "0"), new Carta("6", "azul", "0"),
+			new Carta("7", "azul", "0"), new Carta("7", "azul", "0"), new Carta("8", "azul", "0"),
+			new Carta("8", "azul", "0"), new Carta("9", "azul", "0"), new Carta("9", "azul", "0") };
 
 	public Uno() {
 	}
 
 	public static void geraBaralho() {
-
 		baralho = new Lista();
-
-		Scanner ler = new Scanner(System.in);
-
-		System.out.print("Informe o nome do arquivo: ");
-		String nome = ler.nextLine() + ".txt";
-
-		try {
-			FileReader arq = new FileReader(nome);
-			BufferedReader lerArq = new BufferedReader(arq);
-
-			String linha = lerArq.readLine();
-			String[] aux;
-			Carta carta;
-			while (linha != null) {
-				aux = linha.split(" ");
-				carta = new Carta(aux[0], aux[1], aux[2]);
-				baralho.add(carta);
-				linha = lerArq.readLine();
-			}
-		} catch (IOException e) {
-
+		for (int i = 0; i < deck.length; i++) {
+			baralho.add(deck[i]);
 		}
-		baralho.embaralhar();
 	}
 
 	// Cada mao compra a quantidade inicial de cartas do jogo
@@ -131,7 +137,7 @@ public class Uno {
 					mostraMao();
 					System.out.println("\nQual carta deseja jogar?");
 					while ((escolha < 0 || escolha > jogadores[vezDoJogador].size() - 1) && escolha != -1
-						   && trocaRodada == false) {
+							&& trocaRodada == false) {
 						escolha = entrada.nextInt();
 						if (escolha < 0 || escolha > jogadores[vezDoJogador].size() - 1) {
 							limpaTela();
@@ -197,13 +203,14 @@ public class Uno {
 		virarCarta();
 	}
 
-	public void virarCarta(){
+	public void virarCarta() {
 		mesa = new Lista();
 		Carta teste = baralho.remove();
 		mesa.add(teste);
 		limpaTela();
 
 	}
+
 	public static void informaSeValeu(String mensagem) {
 		// Informa na tela se valeu ou não
 		limpaTela();
@@ -220,9 +227,9 @@ public class Uno {
 	public static Boolean verificaJogadaValida() {
 		if (escolha > -1 && escolha < jogadores[vezDoJogador].size()) {
 			if (((jogadores[vezDoJogador].get(escolha).getNome().equals(mesa.getLast().getNome()))
-				 || (jogadores[vezDoJogador].get(escolha).getCor().equals(mesa.getLast().getCor())))
-				|| jogadores[vezDoJogador].get(escolha).getNome().equals("Cur")
-				|| jogadores[vezDoJogador].get(escolha).getNome().equals("+4")) {
+					|| (jogadores[vezDoJogador].get(escolha).getCor().equals(mesa.getLast().getCor())))
+					|| jogadores[vezDoJogador].get(escolha).getNome().equals("Cur")
+					|| jogadores[vezDoJogador].get(escolha).getNome().equals("+4")) {
 				Carta aux = jogadores[vezDoJogador].remove(escolha);
 				mesa.add(aux);
 				// Informa na tela se valeu ou não
