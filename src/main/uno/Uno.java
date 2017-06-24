@@ -4,8 +4,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
+
 import main.carta.Carta;
 import main.lista.Lista;
+import main.setup.Setup;
 
 public class Uno {
 	public static Lista baralho;
@@ -91,7 +93,7 @@ public class Uno {
 		}
 	}
 
-	public static void Run() {
+	public void Run() {
 		int resposta = 0;
 
 		while (!terminou) {
@@ -105,7 +107,12 @@ public class Uno {
 				System.out.println("---------------------------------");
 				System.out.println();
 				System.out.println("Vez do Jogador " + (vezDoJogador + 1) + ": ");
-				System.out.println("1. Mostrar Mão \n2. Jogar Carta \n3. Comprar Carta \n4. Sair do jogo");
+				System.out.print("1. Mostrar Mão \n");
+				System.out.print("2. Jogar Carta \n");
+				System.out.print("3. Comprar Carta \n");
+				System.out.print("4. Sair do jogo\n");
+				System.out.print("5. Salvar jogo \n");
+				System.out.print("6. Carregar jogo \n");
 				System.out.println("Opção: ");
 
 				Scanner entrada = new Scanner(System.in);
@@ -153,13 +160,13 @@ public class Uno {
 					break;
 				case 5:
 					limpaTela();
-					// save();
+					Setup.save(this);
 					System.out.println();
 					passaVez = false;
 					break;
 				case 6:
 					limpaTela();
-					// load();
+					Setup.load(this);
 					System.out.println();
 					passaVez = false;
 					break;

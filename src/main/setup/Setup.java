@@ -14,7 +14,7 @@ import main.lista.Lista;
 public class Setup {
 	public Setup() {}
 
-	public void save(Uno uno) {
+	public static void save(Uno uno) {
 		try {
 			FileWriter arq;
 			PrintWriter writeArq;
@@ -88,7 +88,7 @@ public class Setup {
 		}
 	}
 
-	public void load(Uno uno) {
+	public static void load(Uno uno) {
 		try {
 
 			File arq;
