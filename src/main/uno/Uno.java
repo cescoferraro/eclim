@@ -176,16 +176,12 @@ public class Uno {
 				}
 			}
 		}
-
 	}
 
 	public void inicializacaoGeral() {
 		geraBaralho();
-
 		Scanner entrada = new Scanner(System.in);
-
 		System.out.print("Quantidade de jogadores: ");
-
 		while (qtdJogadores < 1 || qtdJogadores > 10) {
 			qtdJogadores = entrada.nextInt();
 		}
@@ -383,140 +379,4 @@ public class Uno {
 			System.out.println();
 		}
 	}
-
-	/**
-	 * @return the baralho
-	 */
-	public static Lista getBaralho() {
-		return baralho;
-	}
-
-	/**
-	 * @param baralho
-	 *            the baralho to set
-	 */
-	public static void setBaralho(Lista baralho) {
-		Uno.baralho = baralho;
-	}
-
-	/**
-	 * @return the mesa
-	 */
-	public static Lista getMesa() {
-		return mesa;
-	}
-
-	/**
-	 * @param mesa
-	 *            the mesa to set
-	 */
-	public static void setMesa(Lista mesa) {
-		Uno.mesa = mesa;
-	}
-
-	/**
-	 * @return the jogadores
-	 */
-	public static Lista[] getJogadores() {
-		return jogadores;
-	}
-
-	/**
-	 * @param jogadores
-	 *            the jogadores to set
-	 */
-	public static void setJogadores(Lista[] jogadores) {
-		Uno.jogadores = jogadores;
-	}
-
-	/**
-	 * @return the qtdJogadores
-	 */
-	public static int getQtdJogadores() {
-		return qtdJogadores;
-	}
-
-	/**
-	 * @param qtdJogadores
-	 *            the qtdJogadores to set
-	 */
-	public static void setQtdJogadores(int qtdJogadores) {
-		Uno.qtdJogadores = qtdJogadores;
-	}
-
-	/**
-	 * @return the vezDoJogador
-	 */
-	public static int getVezDoJogador() {
-		return vezDoJogador;
-	}
-
-	/**
-	 * @param vezDoJogador
-	 *            the vezDoJogador to set
-	 */
-	public static void setVezDoJogador(int vezDoJogador) {
-		Uno.vezDoJogador = vezDoJogador;
-	}
-
-	/**
-	 * @return the definidorDeVez
-	 */
-	public static int getDefinidorDeVez() {
-		return definidorDeVez;
-	}
-
-	/**
-	 * @param definidorDeVez
-	 *            the definidorDeVez to set
-	 */
-	public static void setDefinidorDeVez(int definidorDeVez) {
-		Uno.definidorDeVez = definidorDeVez;
-	}
-
-	/**
-	 * @return the passaVez
-	 */
-	public static Boolean getPassaVez() {
-		return passaVez;
-	}
-
-	/**
-	 * @param passaVez
-	 *            the passaVez to set
-	 */
-	public static void setPassaVez(Boolean passaVez) {
-		Uno.passaVez = passaVez;
-	}
-
-	/**
-	 * @return the terminou
-	 */
-	public static Boolean getTerminou() {
-		return terminou;
-	}
-
-	/**
-	 * @param terminou
-	 *            the terminou to set
-	 */
-	public static void setTerminou(Boolean terminou) {
-		Uno.terminou = terminou;
-	}
-
-	/**
-	 * @return the escolha
-	 */
-	public static int getEscolha() {
-		return escolha;
-	}
-
-	/**
-	 * @param escolha
-	 *            the escolha to set
-	 */
-	public static void setEscolha(int escolha) {
-		Uno.escolha = escolha;
-	}
-
 }
