@@ -11,16 +11,16 @@ import main.carta.Carta;
 import main.lista.Lista;
 
 public class Uno {
-	private static Lista baralho;
-	private static Lista mesa;
-	private static Lista[] jogadores;
-	private static int qtdJogadores = 0;
-	private static int vezDoJogador = 0;
-	private static int definidorDeVez = 1;
-	private static Boolean passaVez = false;
-	private static Boolean terminou = false;
-	private static int escolha = -2;
-	private static Scanner entrada = new Scanner(System.in);
+	public static Lista baralho;
+	public static Lista mesa;
+	public static Lista[] jogadores;
+	public static int qtdJogadores = 0;
+	public static int vezDoJogador = 0;
+	public static int definidorDeVez = 1;
+	public static Boolean passaVez = false;
+	public static Boolean terminou = false;
+	public static int escolha = -2;
+	public static Scanner entrada = new Scanner(System.in);
 
 	public static void geraBaralho() {
 
@@ -441,82 +441,4 @@ public class Uno {
 		}
 	}
 
-	public static void load() {
-		try {
-
-			File arq;
-			BufferedReader lerArq;
-			String conteudo;
-
-			// carrega baralho
-			arq = new File("saveLoadBaralho.txt");
-			if (arq.exists()) {
-				baralho.clear();
-				lerArq = new BufferedReader(new FileReader(arq));
-				String[] lstObj = lerArq.readLine().split(";");
-				Carta carta;
-
-				for (int i = 0; i < lstObj.length; i++) {
-					String atributos[] = lstObj[i].split(",");
-
-					carta = new Carta(atributos[0], atributos[1], atributos[2]);
-					baralho.add(i, carta);
-				}
-
-				// carrega mesa
-				arq = new File("saveLoadMesa.txt");
-
-				mesa.clear();
-				lerArq = new BufferedReader(new FileReader(arq));
-				lstObj = lerArq.readLine().split(";");
-
-				for (int i = 0; i < lstObj.length; i++) {
-					String atributos[] = lstObj[i].split(",");
-
-					carta = new Carta(atributos[0], atributos[1], atributos[2]);
-					mesa.add(i, carta);
-				}
-
-				// carrega jogadores
-				arq = new File("saveLoadJogadores.txt");
-				for (int x = 0; x < jogadores.length; x++)
-					jogadores[x].clear();
-
-				lerArq = new BufferedReader(new FileReader(arq));
-				lstObj = lerArq.readLine().split(";;");
-
-				for (int i = 0; i < lstObj.length; i++) {
-					Lista jog = new Lista();
-
-					String obj[] = lstObj[i].split(";");
-					for (int z = 0; z < obj.length; z++) {
-						String atributos[] = obj[z].split(",");
-
-						carta = new Carta(atributos[0], atributos[1], atributos[2]);
-
-						jog.add(carta);
-					}
-
-					jogadores[i] = jog;
-				}
-
-				// carrega config
-				arq = new File("saveLoadConfig.txt");
-				lerArq = new BufferedReader(new FileReader(arq));
-				String atributos[] = lerArq.readLine().split(",");
-
-				qtdJogadores = Integer.parseInt(atributos[0]);
-				vezDoJogador = Integer.parseInt(atributos[1]);
-				definidorDeVez = Integer.parseInt(atributos[2]);
-				passaVez = Boolean.parseBoolean(atributos[3]);
-				terminou = Boolean.parseBoolean(atributos[3]);
-
-			} else {
-				System.out.println("Não existe jogo salvo ou os arquivos foram corrompidos.");
-			}
-
-		} catch (IOException e) {
-			System.out.println("Ocorreu um erro no processo. Tente novamente.");
-	     }
- 	}
 }
