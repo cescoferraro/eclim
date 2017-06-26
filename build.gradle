@@ -9,8 +9,6 @@ buildscript {
   }
 }
 
-apply plugin: "edu.sc.seis.launch4j"
-
 repositories {
 	mavenCentral()
 }
