@@ -1,14 +1,34 @@
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "gradle.plugin.edu.sc.seis.gradle:launch4j:2.3.0"
+  }
+}
+
+apply plugin: "edu.sc.seis.launch4j"
+
 repositories {
 	mavenCentral()
 }
 
 apply plugin: 'java'
 apply plugin: 'application'
-
+apply plugin: 'edu.sc.seis.launch4j'
 dependencies {
 	compile 'org.apache.commons:commons-lang3:3.3.2'
 	testCompile 'junit:junit:4.12'
 } 
+
+launch4j {
+    
+  mainClassName = 'main.app.App'
+    outfile = 'uno.exe'
+}
+
 test {
     testLogging.showStandardStreams = true
 }

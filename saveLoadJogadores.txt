@@ -1,1 +1,1 @@
-8,azul,0;2,vermelho,0;4,vermelho,0;0,azul,0;2,vermelho,0;6,verde,0;0,amarelo,0
+9,azul,0;9,azul,0;8,azul,0;8,azul,0;7,azul,0;7,azul,0;6,azul,0
