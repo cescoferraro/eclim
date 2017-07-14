@@ -1,4 +1,49 @@
 #+TITLE: Trabalho T2 
+#+OPTIONS: toc:nil 
+\newpage
+
+* Esquema
+
+O esquema não foi modificado. Permaneceu o mesmo do trabalho 1.
+
+
+   #+begin_src sql 
+CREATE TABLE FUNCIONARIO (
+    MATRICULA NUMBER(9),
+    SENHA VARCHAR(20),
+    NASCIMENTO DATE,
+    DATA_ADMISSAO DATE,
+    SEXO VARCHAR(1),
+    NOME VARCHAR(35),
+    ENDERECO VARCHAR(35),
+    SALARIO NUMBER(5),
+    PRIMARY KEY (MATRICULA)
+);
+
+CREATE TABLE EQUIPAMENTO (
+    IDENTIFICADOR NUMBER(9),
+    DATA_AQUISICAO DATE,
+    DESCRICAO VARCHAR(100),
+    CUSTO_DIARIA NUMBER(10),
+    PRIMARY KEY (IDENTIFICADOR)
+);
+
+CREATE TABLE RESERVAS(
+    MATRICULA NUMBER(9),
+    IDENTIFICADOR NUMBER(9),
+    PROTOCOLO INT,
+    DATA_INICIO DATE,
+    DATA_TERMINO DATE,
+    PRIMARY KEY (PROTOCOLO),
+    CONSTRAINT FK_MATRICULA 
+    	       FOREIGN KEY (MATRICULA) 
+	       REFERENCES FUNCIONARIO (MATRICULA),
+    CONSTRAINT FK_IDENTIFICADOR
+    	       FOREIGN KEY (IDENTIFICADOR)
+	       REFERENCES EQUIPAMENTO (IDENTIFICADOR)
+);
+   #+end_src
+* Programa
 
 Para rodar o trabalho, o usuário deve entrar na pasta e rodar o seguinte comando:
 
@@ -9,7 +54,28 @@ emitir, assim como demostrado na figura abaixo.
 
 [[file:./static/menu.png]]
 
-
-
-
+** Comandos
+*** Lista Funcionários 
+Exibe uma lista com todos os funcionários presentes na database.
+*** Insert Random Funcionários 
+Insere um funcionário na database com informações aleatórias. 
+Imprime o número da matrícula do funcionário inserido.
+*** Lista Equipamentos 
+Exibe uma lista com todos os equipamentos presentes na database.
+*** Insert Random Equipamentos 
+Insere um equipamento na database com informações aleatórias. 
+Imprime o identificador do equipamento inserido.
+*** Insert Reservas 
+Insere um reserva na database. Perguntando qual a matricula do
+funcionário que vai realizar a reserva e o identificador do
+equipamento que vai ser reservado.
+[[file:./static/reservas.png]]
+*** Imprimir Relatório Reservas 
+Lista todas as reservas que ainda não começaram. 
+*** Imprimir Relatório Reservas Por Equipamento 
+Exibe relatório sobre o custo das reservas de cada equipamento.
+*** Imprimir Relatório Reservas Por Funcionários 
+Exibe relatório sobre o custo das reservas de cada funcionários.
+*** Reserva mais Longa 
+Imprime o identificador da reserva maid longa na database. 
 #  LocalWords:  gradlew run

@@ -7,6 +7,6 @@ select 333, TO_DATE('2003/05/03 21:02:44', 'yyyy/mm/dd hh24:mi:ss'), 'T', 23444 
 union all select 444, TO_DATE('2003/05/03 21:02:44', 'yyyy/mm/dd hh24:mi:ss'), 'T', 23444 from dual;
 
 insert into RESERVAS (PROTOCOLO,MATRICULA,IDENTIFICADOR,DATA_INICIO,DATA_TERMINO) 
-select 885533, 123456389, 333 , TO_DATE('2019/05/03 21:02:44', 'yyyy/mm/dd hh24:mi:ss'), TO_DATE('2019/05/05 21:02:44', 'yyyy/mm/dd hh:mi:ss') from dual
-union all select 9933333, 123456389, 444 , TO_DATE('2019/05/03 21:02:44', 'yyyy/mm/dd hh:mi:ss'), TO_DATE('2019/05/05 15:02:44', 'yyyy/mm/dd hh:mi:ss') from dual
-union all select 663333, 123456389, 333 , TO_DATE('2019/05/03 11:42:44', 'yyyy/mm/dd hh:mi:ss'), TO_DATE('2019/05/04 19:52:04', 'yyyy/mm/dd hh:mi:ss') from dual;
+select 885533, 123456389, 333 , TO_DATE('2019/05/03 9:02:44', 'yyyy/mm/dd hh24:mi:ss'), TO_DATE('2019/05/05 10:02:44', 'yyyy/mm/dd hh:mi:ss') from dual
+union all select 9933333, 123456389, 444 , TO_DATE('2019/05/03 2:02:44', 'yyyy/mm/dd hh:mi:ss'), TO_DATE('2019/05/05 5:02:44', 'yyyy/mm/dd hh:mi:ss') from dual
+union all select 663333, 123456389, 333 , TO_DATE('2019/05/03 7:42:44', 'yyyy/mm/dd hh:mi:ss'), TO_DATE('2019/05/04 11:52:04', 'yyyy/mm/dd hh:mi:ss') from dual;

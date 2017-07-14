@@ -336,8 +336,8 @@ public class App {
 		System.out.println("4 ) Insert random equipamentos");
 		System.out.println("5 ) Insert reservas");
 		System.out.println("6 ) Imprimir relatorio reservas");
-		System.out.println("7 ) Imprimir relatorio custo por reservas");
-		System.out.println("8 ) Imprimir relatorio custo por funcionario");
+		System.out.println("7 ) Imprimir relatorio reservas custo por equipamento");
+		System.out.println("8 ) Imprimir relatorio reservas custo por funcionario");
 		System.out.println("9 ) Reserva mais comprida");
 		System.out.println("0 ) Sair");
 		System.out.println("=================");
