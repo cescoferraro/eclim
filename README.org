@@ -1,0 +1,9 @@
+#+TITLE: Trabalho T2 
+
+Cutting edge PWA ready React.js Boilerplate. 
+This is created as a template for my cookie cutter called [[http://github.com/cescoferraro/react-boiler][react-boiler]].
+The goal here is to enable developers, a.k.a. me, deliver tommorow's web today.
+
+
+
+
