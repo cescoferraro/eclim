@@ -1,10 +1,15 @@
 #+TITLE: Trabalho T2 
 
 Para rodar o trabalho, o usuário deve entrar na pasta e rodar o seguinte comando:
- `./gradlew run`
- 
+
+- /./gradlew run/
+
+O programa traz um menus com as possíveis ações que o usuário pode
+emitir, assim como demostrado na figura abaixo.
 
 [[file:./static/menu.png]]
 
 
 
+
+#  LocalWords:  gradlew run
