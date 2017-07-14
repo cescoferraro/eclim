@@ -1,22 +1,43 @@
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'eclipse'
 
-dependencies {
-  compile files('libs/ojdbc6.jar')
+
+repositories {
+    mavenCentral()
 }
 
-mainClassName = "main.java.Test"
+dependencies {
+    compile files('libs/ojdbc6.jar')
+    compile 'org.apache.commons:commons-lang3:3.4'
+    // https://mvnrepository.com/artifact/io.codearte.jfairy/jfairy
+    compile group: 'io.codearte.jfairy', name: 'jfairy', version: '0.5.7'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-nop
+    compile    group: 'org.slf4j', name: 'slf4j-nop', version: '1.7.21'
+
+}
+
+mainClassName = "main.App.App"
 
 applicationDefaultJvmArgs = ["-ea"]
 
 run{
-  standardInput = System.in
+    standardInput = System.in
 }
 
 sourceSets {
-  main {
-    java {
-      srcDirs 'src'
+    main {
+	java {
+	    srcDirs 'src'
+	}
     }
+}
+
+jar {
+  manifest {
+    attributes(
+      'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+      'Main-Class': 'main.App.App'
+    )
   }
 }
