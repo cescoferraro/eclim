@@ -8,9 +8,9 @@ public class Stack {
     public class Node {
 
         public Node next;
-        public int element;
+        public Double element;
 
-        public Node(int element) {
+        public Node(Double element) {
             next = null;
             this.element = element;
         }
@@ -27,19 +27,19 @@ public class Stack {
 	public int size(){
 		return count;
 	}
-	public int peek(){
+	public Double peek(){
 		return start.element;
 	}
 
-    public void add(int e) {
+    public void add(Double e) {
         Node aux = new Node(e);
         aux.next = start;
         start = aux;
 		count++;
     }
 
-    public int pop() {
-        int r = -1;
+    public Double pop() {
+        Double r = -1.0;
 
         if (isEmpty()) {
             System.err.println("Erro! A pilha está isEmpty.");

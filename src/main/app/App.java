@@ -24,6 +24,7 @@ public class App {
 			} catch (IOException x) {
 			System.err.format("Erro de E/S: %s%n", x);
 		}
-		System.out.println(uno.top());
+		System.out.println("Resultado: "+uno.top());
+		System.out.println("Tamanho da pilha: "+ uno.size());
 	}
 }

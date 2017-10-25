@@ -1,4 +1,4 @@
-% Created 2017-10-25 Wed 17:13
+% Created 2017-10-25 Wed 20:38
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -28,38 +28,67 @@
 
 \maketitle
 \begin{abstract}
+
  O algoritmo da calculadora é bastente simples. Primeiramente, na classe App, lemos todas as linhas do arquivo, removemos todos os caractéres desnecessários. Cada linha lida em um arquivo chamado `exemplo.txt` gera uma ação a ser executada na classe Uno ultilizando o método público handleCommand. 
 Esse método basicamente verifica se os caractéres lidos em cada linha são numéricos ou não. Em caso positivo, ele adiciona esse elemento a um pilha interna à classe Uno. Em caso negativo, ele identifica qual operador foi passado ao programa e executa a tarefa específica a cada operador nessa mesma pilha interna. A pilha interna da classe Uno foi implementada paralelamente na classe Stack ultilizando uma lista encadeada para manter as informações.
+
 \end{abstract}
 
-\section{Clase App}
-\label{sec:orga83a469}
-\section{Clase Uno}
-\label{sec:org27ab679}
+
+
+
+O trablho foi realizado um um ambiente Gradle que está nesse
+repositório
+\href{https://github.com/cescoferraro/eclim/tree/feature/hp}{https://github.com/cescoferraro/eclim/tree/feature/hp}. Para facilitar
+o processo de testar o código eu adionei o arquivo jar com o resultado
+do código implementado.
+
+\begin{verbatim}
+java -jar hp.jar
+\end{verbatim}
+
+\section{Classe App}
+\label{sec:org2fd971d}
+
+
+Basicamente somente copia o código encontrado no enunciado do trabalho
+daixando o algoritmo para a classe Uno.
+
+\section{Classe Uno}
+\label{sec:org81f1813}
+
+O método handleCommand é o coração da classe. Ele verifica se o
+comando enviado é um inteiro ou uma operação conhecida pela
+calculadora, executando o algoritmo pertinente a cada commando.
+O método top retorna o valor do último elemento da pilha privada à
+classe.  O método size retorna a quantidade de elementos na pilha
+num determinado instante.
 
 \begin{center}
 \begin{tabular}{ll}
 Modifier and Type & Method and Description\\
 \hline
 void & handleCommand(java.lang.String cmd)\\
-java.lang.Integer & top()\\
+java.lang.Double & top()\\
+int & size()\\
 \end{tabular}
 \end{center}
 
+\section{Classe Stack}
+\label{sec:orgdc9a1ff}
 
-\section{Clase Stack}
-\label{sec:org7bdfd7b}
+A classe stack implementa uma pilha utilizando um lista encadeada.
 
 \begin{center}
 \begin{tabular}{ll}
 Modifier and Type & Method and Description\\
 \hline
-add & add(int e)\\
+add & add(Double e)\\
 void & handleCommand(java.lang.String cmd)\\
 boolean & isEmpty()\\
-int & peek()\\
-int & pop()\\
-int & size()\\
+Double & peek()\\
+Double & pop()\\
+Double & size()\\
 \end{tabular}
 \end{center}
 \end{document}
