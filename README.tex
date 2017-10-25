@@ -1,0 +1,65 @@
+% Created 2017-10-25 Wed 17:13
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Francesco Antonello Ferraro}
+\date{\today}
+\title{Calculadore de Pilha Encadeada}
+\hypersetup{
+ pdfauthor={Francesco Antonello Ferraro},
+ pdftitle={Calculadore de Pilha Encadeada},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.3.2 (Org mode 9.1.1)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\begin{abstract}
+ O algoritmo da calculadora é bastente simples. Primeiramente, na classe App, lemos todas as linhas do arquivo, removemos todos os caractéres desnecessários. Cada linha lida em um arquivo chamado `exemplo.txt` gera uma ação a ser executada na classe Uno ultilizando o método público handleCommand. 
+Esse método basicamente verifica se os caractéres lidos em cada linha são numéricos ou não. Em caso positivo, ele adiciona esse elemento a um pilha interna à classe Uno. Em caso negativo, ele identifica qual operador foi passado ao programa e executa a tarefa específica a cada operador nessa mesma pilha interna. A pilha interna da classe Uno foi implementada paralelamente na classe Stack ultilizando uma lista encadeada para manter as informações.
+\end{abstract}
+
+\section{Clase App}
+\label{sec:orga83a469}
+\section{Clase Uno}
+\label{sec:org27ab679}
+
+\begin{center}
+\begin{tabular}{ll}
+Modifier and Type & Method and Description\\
+\hline
+void & handleCommand(java.lang.String cmd)\\
+java.lang.Integer & top()\\
+\end{tabular}
+\end{center}
+
+
+\section{Clase Stack}
+\label{sec:org7bdfd7b}
+
+\begin{center}
+\begin{tabular}{ll}
+Modifier and Type & Method and Description\\
+\hline
+add & add(int e)\\
+void & handleCommand(java.lang.String cmd)\\
+boolean & isEmpty()\\
+int & peek()\\
+int & pop()\\
+int & size()\\
+\end{tabular}
+\end{center}
+\end{document}

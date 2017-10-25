@@ -1,0 +1,28 @@
+#+TITLE: Calculadore de Pilha Encadeada 
+#+OPTIONS: toc:nil
+
+\begin{abstract}
+ O algoritmo da calculadora é bastente simples. Primeiramente, na classe App, lemos todas as linhas do arquivo, removemos todos os caractéres desnecessários. Cada linha lida em um arquivo chamado `exemplo.txt` gera uma ação a ser executada na classe Uno ultilizando o método público handleCommand. 
+Esse método basicamente verifica se os caractéres lidos em cada linha são numéricos ou não. Em caso positivo, ele adiciona esse elemento a um pilha interna à classe Uno. Em caso negativo, ele identifica qual operador foi passado ao programa e executa a tarefa específica a cada operador nessa mesma pilha interna. A pilha interna da classe Uno foi implementada paralelamente na classe Stack ultilizando uma lista encadeada para manter as informações.
+\end{abstract}
+
+* Clase App
+* Clase Uno 
+
+  | Modifier and Type    | Method and Description                 |
+  | <20>                 | <38>                                   |
+  |----------------------+----------------------------------------|
+  | void	         | handleCommand(java.lang.String cmd)    |
+  | java.lang.Integer    | top()                                  |
+* Clase Stack 
+
+  | Modifier and Type    | Method and Description                 |
+  | <20>                 | <38>                                   |
+  |----------------------+----------------------------------------|
+  | add                  | add(int e)                             |
+  | void	         | handleCommand(java.lang.String cmd)    |
+  | boolean              | isEmpty()                              |
+  | int                  | peek()                                 |
+  | int                  | pop()                                  |
+  | int                  | size()                                 |
+
