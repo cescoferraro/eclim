@@ -1,4 +1,4 @@
-#+TITLE: Calculadore de Pilha Encadeada 
+#+TITLE: Calculadora de Pilha Encadeada 
 
 #+OPTIONS: toc:nil
 
@@ -16,7 +16,7 @@ O trablho foi realizado um um ambiente Gradle que está nesse
 repositório
 [[https://github.com/cescoferraro/eclim/tree/feature/hp][https://github.com/cescoferraro/eclim/tree/feature/hp]]. Para facilitar
 o processo de testar o código eu adionei o arquivo jar com o resultado
-do código implementado.
+do código implementado na pasta de entrega do trabalho.
 
    #+begin_src bash 
 java -jar hp.jar
@@ -38,7 +38,6 @@ daixando o algoritmo para a classe Uno.
   num determinado instante.
   
   | Modifier and Type    | Method and Description                 |
-  | <20>                 | <38>                                   |
   |----------------------+----------------------------------------|
   | void	         | handleCommand(java.lang.String cmd)    |
   | java.lang.Double     | top()                                  |
@@ -49,7 +48,6 @@ daixando o algoritmo para a classe Uno.
   A classe stack implementa uma pilha utilizando um lista encadeada.
   
   | Modifier and Type    | Method and Description                 |
-  | <20>                 | <38>                                   |
   |----------------------+----------------------------------------|
   | add                  | add(Double e)                          |
   | void	         | handleCommand(java.lang.String cmd)    |
