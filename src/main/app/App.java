@@ -11,20 +11,6 @@ import java.io.IOException;
 public class App {
 	public static void main(String[] args) {
 		Uno uno = new Uno();
-		Path path1 = Paths.get("exemplo.txt");
-		try(Scanner sc=new Scanner(Files.newBufferedReader(path1,Charset.defaultCharset())))
-			{
-				sc.useDelimiter("[;\n]"); // separadores: ; e nova linha
-				while (sc.hasNext()) {
-					String s = sc.next().replaceAll("\n", "");
-					s = s.replaceAll("\r", "");
-					s = s.replaceAll("\t", "");
-					uno.handleCommand(s);
-				}
-			} catch (IOException x) {
-			System.err.format("Erro de E/S: %s%n", x);
-		}
-		System.out.println("Resultado: "+uno.top());
-		System.out.println("Tamanho da pilha: "+ uno.size());
+		System.out.println("BABY STEPS");
 	}
 }
