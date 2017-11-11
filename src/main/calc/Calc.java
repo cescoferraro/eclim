@@ -2,10 +2,10 @@ package main.calc;
 
 public class Calc{
 
-    private double operando1, operando2;
+    private double first, second;
     private char operador;
 
-    public void setOperando(char valor) {
+    public void setOperator(char valor) {
         switch (valor) {
             case '+':
                 operador = '+';
@@ -25,7 +25,7 @@ public class Calc{
         }
     }
 
-    public double calcula() throws Exception {
+    public double calc() throws Exception {
         switch (operador) {
             case '+':
                 return soma();
@@ -42,31 +42,31 @@ public class Calc{
         }
     }
 
-    public void setOperador1(double valor1) {
-        this.operando1 = valor1;
+    public void setFirst(double valor1) {
+        this.first = valor1;
     }
 
-    public void setOperador2(double valor2) {
-        this.operando2 = valor2;
+    public void setSecond(double valor2) {
+        this.second = valor2;
     }
 
     public double soma() {
-        return (operando1 + operando2);
+        return (first + second);
     }
 
     public double subtracao() {
-        return (operando1 - operando2);
+        return (first - second);
     }
 
     public double produto() {
-        return (operando1 * operando2);
+        return (first * second);
     }
 
     public double divisao() {
-        return (operando1 / operando2);
+        return (first / second);
     }
 
     public double potencia() {
-        return Math.pow(operando1, operando2);
+        return Math.pow(first, second);
     }
 }

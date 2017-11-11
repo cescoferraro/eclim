@@ -129,20 +129,17 @@ public class Tree {
         Calc calc = new Calc();
         
         while(count > 1) {
-            List<Node> listaDeNodosExternos = getListOfExternalNodes();
+            List<Node> listaDeNodosExternos = all();
             for (int i = 1; i < listaDeNodosExternos.size(); i++) {
                 Node anterior = listaDeNodosExternos.get(i - 1);
                 Node atual = listaDeNodosExternos.get(i);
                 if(anterior.father == atual.father) {
                     Node pai = anterior.father;
-                    calc.setOperador1(Double.parseDouble(anterior.element));
-                    calc.setOperador2(Double.parseDouble(atual.element));
-                    calc.setOperando(pai.element.charAt(0));
-                    double valor = calc.calcula();
-
-                    String valorString = String.format("%f", valor).replace(',','.');
-                    pai.setElement(valorString);
-
+                    calc.setFirst(Double.parseDouble(anterior.element));
+                    calc.setSecond(Double.parseDouble(atual.element));
+                    calc.setOperator(pai.element.charAt(0));
+                    String vString = String.format("%f", calc.calc()).replace(',','.');
+                    pai.setElement(vString);
                     pai.left = null;
                     pai.right = null;
                     anterior.father = null;
@@ -225,9 +222,7 @@ public class Tree {
         return li;
     }
     
-    //variacao do caminhamento em largura, porem adiciona
-    //apenas os nodes externos, e retorna uma lista de Node
-    public List<Node> getListOfExternalNodes() throws Exception {
+    public List<Node> all() throws Exception {
         List<Node> li = new ArrayList<Node>();
         Queue<Node> fila = new Queue<>();
         Node aux = null;

@@ -20,7 +20,7 @@ public class Queue<E> {
 
     public E head() throws Exception {
         if (fila.isEmpty()) {
-            throw new Exception("A fila esta vazia");
+            throw new Exception("Empty queue");
         } else {
             E elem = fila.get(0);
             return elem;
@@ -33,13 +33,13 @@ public class Queue<E> {
 
     public E dequeue() throws Exception {
         if (fila.isEmpty()) {
-            throw new Exception("Fila esta vazia!");
+            throw new Exception("Empty queue");
         } else {
             E elem = fila.remove(0);
             if (elem != null) {
                 return elem;
             } else {
-                throw new Exception("Fila esta vazia!");
+				throw new Exception("Empty queue");
             }
         }
     }
