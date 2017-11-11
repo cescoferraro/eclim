@@ -2,57 +2,11 @@
 
 #+OPTIONS: toc:nil
 
-\begin{abstract}
-
- O algoritmo da calculadora é bastente simples. Primeiramente, na classe App, lemos todas as linhas do arquivo, removemos todos os caractéres desnecessários. Cada linha lida em um arquivo chamado `exemplo.txt` gera uma ação a ser executada na classe Uno ultilizando o método público handleCommand. 
-Esse método basicamente verifica se os caractéres lidos em cada linha são numéricos ou não. Em caso positivo, ele adiciona esse elemento a um pilha interna à classe Uno. Em caso negativo, ele identifica qual operador foi passado ao programa e executa a tarefa específica a cada operador nessa mesma pilha interna. A pilha interna da classe Uno foi implementada paralelamente na classe Stack ultilizando uma lista encadeada para manter as informações.
-
-\end{abstract}
-
-
-
-
 O trablho foi realizado um um ambiente Gradle que está nesse
-repositório
-[[https://github.com/cescoferraro/eclim/tree/feature/hp][https://github.com/cescoferraro/eclim/tree/feature/hp]]. Para facilitar
+repositório [[https://github.com/cescoferraro/eclim/tree/feature/calculadoraBinaryTree][https://github.com/cescoferraro/eclim/tree/feature/calculadoraBinaryTree]]. Para facilitar
 o processo de testar o código eu adionei o arquivo jar com o resultado
 do código implementado na pasta de entrega do trabalho.
 
    #+begin_src bash 
 java -jar hp.jar
    #+end_src
-
-* Classe App
-
-
-Basicamente somente copia o código encontrado no enunciado do trabalho
-daixando o algoritmo para a classe Uno.
-
-* Classe Uno 
-
-  O método handleCommand é o coração da classe. Ele verifica se o
-  comando enviado é um inteiro ou uma operação conhecida pela
-  calculadora, executando o algoritmo pertinente a cada commando.
-  O método top retorna o valor do último elemento da pilha privada à
-  classe.  O método size retorna a quantidade de elementos na pilha
-  num determinado instante.
-  
-  | Modifier and Type    | Method and Description                 |
-  |----------------------+----------------------------------------|
-  | void	         | handleCommand(java.lang.String cmd)    |
-  | java.lang.Double     | top()                                  |
-  | int                  | size()                                 |
-
-* Classe Stack 
-
-  A classe stack implementa uma pilha utilizando um lista encadeada.
-  
-  | Modifier and Type    | Method and Description                 |
-  |----------------------+----------------------------------------|
-  | add                  | add(Double e)                          |
-  | void	         | handleCommand(java.lang.String cmd)    |
-  | boolean              | isEmpty()                              |
-  | Double               | peek()                                 |
-  | Double               | pop()                                  |
-  | Double               | size()                                 |
-
