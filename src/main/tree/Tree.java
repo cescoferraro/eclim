@@ -84,7 +84,7 @@ public class Tree {
         cursor.setElement(value);
     }
     
-    public void addAndMoveCursorToLowerLevel(String valor) {
+    public void addAndMove(String valor) {
         Node novoNo = new Node(valor);
         if(hasLeft()) {
             cursor.left = novoNo;
@@ -103,7 +103,7 @@ public class Tree {
     }
     
     public void addOperando(String valor) {
-        addAndMoveCursorToLowerLevel(valor);
+        addAndMove(valor);
         returnCursorToUpperLevel();
     }
     
