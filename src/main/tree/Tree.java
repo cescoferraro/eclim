@@ -1,244 +1,256 @@
 package main.tree;
 
-
-import java.util.ArrayList;
-import java.util.List;
-import main.linked.Linked;
-import main.queue.Queue;
-import main.calc.Calc;
-
 public class Tree {
 
-    public static final class Node {
+  public static final class TreeNode {
 
-        public Node father;
-        public Node left;
-        public Node right;
-        public String element;
+    public TreeNode father;
+    public TreeNode left;
+    public TreeNode right;
+    public int key;
 
-        public Node(String element) {
-            father = null;
-            left = null;
-            right = null;
-            this.element = element;
-        }
-        
-        public void setElement(String element) {
-            this.element = element;
-        }
+    public TreeNode(int key) {
+      father = null;
+      left = null;
+      right = null;
+      this.key = key;
     }
 
-    private int count; 
-    private Node root; 
-    private Node cursor; 
+    public void setElement(int key) {
+      this.key = key;
+    }
+  }
 
-    public Tree() {
-        count = 0;
-        root = null;
-    }
+  protected TreeNode root = null;
 
-    public boolean isEmpty() {
-        return (root == null);
-    }
+  public Tree() {
+    root = null;
+  }
 
-    public int size() {
-        return count;
-    }
+  public Tree(TreeNode yay) {
+    root = yay;
+  }
 
-    public int height() throws Exception {
-        Queue<Node> fila = new Queue<>();
-        Node aux = null;
-        Node fim = null;
-        if (root != null) {
-            fila.enqueue(root);
-            while(!fila.isEmpty()) {
-                aux = fila.dequeue();
-                if (aux.left != null)
-                    fila.enqueue(aux.left);
-                if (aux.right != null)
-                    fila.enqueue(aux.right);
-                fim = aux;
-            }
-        }                  
-        int cont=0;        
-        while (fim != root) {
-            cont++;
-            fim = fim.father;
-        }        
-        return cont;     
-    }
-    
-    public boolean addRoot(String element) {
-        if (root != null){
-            return false;
-        }
-        
-        Node node = new Node(element);
-        root = node;
-        cursor = root;
-        count++;
-        return true;
-    }
+  public void clear() {
+    root = null;
+  }
 
-    public void setValueOnCursor(String value) {
-        cursor.setElement(value);
-    }
-    
-    public void addAndMove(String valor) {
-        Node novoNo = new Node(valor);
-        if(hasLeft()) {
-            cursor.left = novoNo;
-            novoNo.father = cursor;
-        }
-        else {
-            cursor.right = novoNo;
-            novoNo.father = cursor;
-        }
-        cursor = novoNo;
-        count++;
-    }
-    
-    public void returnCursorToUpperLevel() {
-        cursor = cursor.father;
-    }
-    
-    public void addOperando(String valor) {
-        addAndMove(valor);
-        returnCursorToUpperLevel();
-    }
-    
-    public boolean hasLeft() {
-        if(cursor.left == null)
-            return true;
-        else
-            return false;
-    }
-    
-    public boolean hasRight() {
-        if(cursor.right == null)
-            return true;
-        else
-            return false;
-    }    
-    
-    public boolean verificaSeEstaNaRaiz() {
-        return cursor == root;
-    }
-    
-    public Double calc() throws Exception  {
-        Calc calc = new Calc();
-        
-        while(count > 1) {
-            List<Node> listaDeNodosExternos = all();
-            for (int i = 1; i < listaDeNodosExternos.size(); i++) {
-                Node anterior = listaDeNodosExternos.get(i - 1);
-                Node atual = listaDeNodosExternos.get(i);
-                if(anterior.father == atual.father) {
-                    Node pai = anterior.father;
-                    calc.setFirst(Double.parseDouble(anterior.element));
-                    calc.setSecond(Double.parseDouble(atual.element));
-                    calc.setOperator(pai.element.charAt(0));
-                    String vString = String.format("%f", calc.calc()).replace(',','.');
-                    pai.setElement(vString);
-                    pai.left = null;
-                    pai.right = null;
-                    anterior.father = null;
-                    atual.father = null;
-                    count = count - 2;
-                }
-            }
-        }
-        
-        return Double.parseDouble(root.element);
-    }
-    
-    public boolean isExternal(Node node) {
-        return node.left == null && node.right == null;
-    }
-    
-    public Linked positionsPre() {
-        Linked res = new Linked();
-        positionsPreAux(root, res);
-        return res;
-    }
-    
-    private void positionsPreAux(Node n, Linked res) {
-        if(n == null)
-            return;
-        res.add(n.element);
-        if(n.left != null)
-            positionsPreAux(n.left, res);
-        if(n.right != null)
-            positionsPreAux(n.right, res);
-    }
+  public boolean isEmpty() {
+    return root == null;
+  }
 
-    public Linked positionsPos() {
-        Linked res = new Linked();
-        positionsPosAux(root, res);
-        return res;
-    }
-    
-    private void positionsPosAux(Node n, Linked res) {
-        if(n == null)
-            return;
-        if(n.left != null)
-            positionsPosAux(n.left, res);
-        if(n.right != null)
-            positionsPosAux(n.right, res);
-        res.add(n.element);
-    }
+  public TreeNode getRootNode() {
+    return root;
+  }
 
-    public Linked positionsCentral() {
-        Linked res = new Linked();
-        positionsCentralAux(root, res);
-        return res;
+  public boolean insert(int el) {
+    TreeNode p = root, prev = null;
+    // caso o valor já exista na árvore, não inserir e retornar false
+    if (search(el) != null) return false;
+    // procurando um lugar para colocar o novo nó
+    while (p != null) {
+      prev = p;
+      if (el < p.key) p = p.left;
+      else p = p.right;
     }
-    
-    private void positionsCentralAux(Node n, Linked res) {
-        if(n == null)
-            return;
-        if(n.left != null)
-            positionsCentralAux(n.left, res);
-        res.add(n.element);
-        if(n.right != null)
-            positionsCentralAux(n.right, res);
-    }
+    // se árvore vazia
+    if (root == null) root = new TreeNode(el);
+    else if (prev.key < el) prev.right = new TreeNode(el);
+    else prev.left = new TreeNode(el);
+    return true;
+  }
 
-    public Linked positionsWidth() throws Exception {
-        Linked li = new Linked();
-        Queue<Node> fila = new Queue<>();
-        Node aux = null;
-        if (root != null) {
-            fila.enqueue(root);
-            while(!fila.isEmpty()) {
-                aux = fila.dequeue();
-                if (aux.left != null)
-                    fila.enqueue(aux.left);
-                if (aux.right != null)
-                    fila.enqueue(aux.right);
-                li.add(aux.element);
-            }
-        }
-        return li;
+  public TreeNode search(int el) {
+    return search(root, el);
+  }
+
+  protected TreeNode search(TreeNode p, int el) {
+    while (p != null) {
+      /* se valor procurado == chave do nó retorna referência ao nó */
+      if (el == p.key) return p;
+      /* se valor procurado < chave do nó, procurar na sub-árvore esquerda deste nó */
+      else if (el < p.key) p = p.left;
+      /* se valor procurado > chave do nó, procurar na sub-árvore direita deste nó */
+      else p = p.right;
     }
-    
-    public List<Node> all() throws Exception {
-        List<Node> li = new ArrayList<Node>();
-        Queue<Node> fila = new Queue<>();
-        Node aux = null;
-        if (root != null) {
-            fila.enqueue(root);
-            while(!fila.isEmpty()) {
-                aux = fila.dequeue();
-                if (aux.left != null)
-                    fila.enqueue(aux.left);
-                if (aux.right != null)
-                    fila.enqueue(aux.right);
-                
-                if(aux.left == null && aux.right == null)
-                    li.add(aux);
-            }
-        }
-        return li;
+    // caso chave não foi achada, retorna null
+    return null;
+  }
+
+  /* métodos de busca recursivos */
+  public TreeNode searchR(int el) {
+    return searchR(root, el);
+  }
+
+  protected TreeNode searchR(TreeNode p, int el) {
+    if (p == null || el == p.key) return p;
+    else if (el < p.key) return searchR(p.left, el);
+    else return searchR(p.right, el);
+  }
+
+  protected TreeNode searchFather(int el) {
+    TreeNode p = root;
+    TreeNode prev = null;
+    while (p != null && !(p.key == el)) { // acha o nó p com a chave el
+      prev = p;
+      if (p.key < el) p = p.right;
+      else p = p.left;
     }
+    if (p != null && p.key == el) return prev;
+    return null;
+  }
+
+  public void preorder() {
+    preorder(root);
+  }
+
+  protected void preorder(TreeNode p) {
+    if (p != null) {
+      System.out.print(p.key + " ");
+      preorder(p.left);
+      preorder(p.right);
+    }
+  }
+
+  public void postorder() {
+    postorder(root);
+  }
+
+  protected void postorder(TreeNode p) {
+    if (p != null) {
+      postorder(p.left);
+      postorder(p.right);
+      System.out.print(p.key + " ");
+    }
+  }
+
+  public int max(int i, int j) {
+    return i > j ? i : j;
+  }
+
+  public void displayTree() {
+    if (isEmpty()) {
+      System.out.println("Árvore vazia!");
+      return;
+    }
+    String separator = String.valueOf("  |__");
+    System.out.println(this.root.key);
+    displaySubTree(root.left, separator);
+    displaySubTree(root.right, separator);
+  }
+
+  private void displaySubTree(TreeNode node, String separator) {
+    if (node != null) {
+      TreeNode father = this.searchFather(node.key);
+      if (node.equals(father.left) == true) {
+        System.out.println(separator + node.key + " (ESQ)");
+      } else {
+        System.out.println(separator + node.key + " (DIR)");
+      }
+      displaySubTree(node.left, "     " + separator);
+      displaySubTree(node.right, "     " + separator);
+    }
+  }
+
+  public int countFolhas() {
+    int cont = 0;
+    if (root != null) {
+      cont = cont + countFolhas(root.left) + countFolhas(root.right);
+      return cont;
+    } else {
+      return cont;
+    }
+  }
+
+  protected int countFolhas(TreeNode p) {
+    int cont = 0;
+    if (p.left == null || p.right == null) {
+      return 1;
+    }
+    if (p != null) {
+      cont = cont + countFolhas(p.left) + countFolhas(p.right);
+    }
+    return cont;
+  }
+
+  public int count() {
+    if (root != null) {
+      int cont = 0;
+      cont = 1;
+      cont = cont + count(root.left) + count(root.right);
+      return cont;
+    } else {
+      return 0;
+    }
+  }
+
+  protected int count(TreeNode p) {
+    int cont = 0;
+    if (p != null) {
+      cont = cont + 1 + count(p.left) + count(p.right);
+    }
+    return cont;
+  }
+
+  public void inorder() {
+    inorder(root);
+  }
+
+  protected void inorder(TreeNode p) {
+    if (p != null) {
+      inorder(p.left);
+      System.out.print(p.key + " ");
+      inorder(p.right);
+    }
+  }
+
+  //public int countLeafNodes()   Deve retornar o número de nodos folha da árvore
+  //public int height()   Deve retornar a altura da árvore
+
+  public int media() {
+    int cont = 0;
+    if (root != null) {
+      cont = root.key;
+      cont = cont + media(root.left) + media(root.right);
+      return cont / count();
+    } else {
+      return cont;
+    }
+  }
+
+  protected int media(TreeNode p) {
+    int cont = 0;
+    if (p != null) {
+      cont = p.key + media(p.left) + media(p.right);
+    }
+    return cont;
+  }
+
+  public Tree clone() {
+    if (root == null) {
+      return new Tree(null);
+    } else {
+      TreeNode brandNew = new TreeNode(root.key);
+      if (root.left != null) {
+        brandNew.left = clone(root.left);
+      }
+      if (root.right != null) {
+        brandNew.right = clone(root.right);
+      }
+      Tree ne = new Tree(brandNew);
+      return ne;
+    }
+  }
+
+  protected TreeNode clone(TreeNode p) {
+
+    TreeNode brandNew = new TreeNode(p.key);
+    if (p.left != null) {
+      brandNew.left = clone(p.left);
+    }
+    if (p.right != null) {
+      brandNew.right = clone(p.right);
+    }
+    return brandNew;
+  }
 }
